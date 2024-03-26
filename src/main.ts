@@ -11,7 +11,8 @@ async function bootstrap() {
   app.useGlobalPipes(
     new ValidationPipe({
       forbidUnknownValues: false,
-      skipMissingProperties: false
+      skipMissingProperties: false,
+      transform: true,
     })
   );
   await app.listen(process.env.PORT, () => {

@@ -39,7 +39,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
         return token
     }
     async validate(payload: JwtPayloadDto) {
-        const user = await this.userModel.findById({ id: +payload.id });
+        const user = await this.userModel.findById(payload.id);
         if (!user) throw new UnauthorizedException(AuthMessages.Login);
         return user
     }

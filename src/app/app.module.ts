@@ -7,6 +7,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from 'src/user/user.module';
 import { AuthModule } from 'src/auth/auth.module';
 import { CustomJWTModule } from 'src/jwt-modules/jwt.module';
+import { ItemModule } from 'src/items/item.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { CustomJWTModule } from 'src/jwt-modules/jwt.module';
     UsersModule,
     AuthModule,
     CustomJWTModule,
+    ItemModule,
   ],
   controllers: [AppController],
   providers: [AppService],

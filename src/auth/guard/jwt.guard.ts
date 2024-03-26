@@ -1,5 +1,5 @@
 import { ExecutionContext, Injectable, UnauthorizedException } from "@nestjs/common";
-import { Model } from "mongoose";
+import mongoose, { Model } from "mongoose";
 import { User } from "src/user/schema/user.schema";
 import { AuthService } from "../auth.service";
 import { InjectModel } from "@nestjs/mongoose";
@@ -36,7 +36,7 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
                 if (typeof refreshTokenVerifyResult == "string" && refreshTokenVerifyResult == JwtError.Expires) {
                     throw new UnauthorizedException(AuthMessages.Login);
                 } else if (typeof refreshTokenVerifyResult == "object" && "id" in refreshTokenVerifyResult) {
-                    const user = await this.userModel.findById({ id: +refreshTokenVerifyResult.id });
+                    const user = await this.userModel.findById(refreshTokenVerifyResult.id);
                     if (!user) throw new UnauthorizedException(AuthMessages.NotFoundAccount);
 
                     const access_token = this.authService.signAccess_tokenJwt({ id: user.id });
@@ -50,7 +50,7 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
                     throw new UnauthorizedException(AuthMessages.LoginAgain);
                 }
             } else if (typeof jwtVerifyResult == "object" && "id" in jwtVerifyResult) {
-                const user = await this.userModel.findById({ id: +jwtVerifyResult.id });
+                const user = await this.userModel.findById(jwtVerifyResult.id);
                 if (!user) throw new UnauthorizedException(AuthMessages.NotFoundAccount);
                 const userObject: IUser = getUserResponse(user);
                 req.user = userObject
@@ -68,7 +68,7 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
             if (typeof refreshTokenVerifyResult == "string" && refreshTokenVerifyResult == JwtError.Expires) {
                 throw new UnauthorizedException(AuthMessages.Login);
             } else if (typeof refreshTokenVerifyResult == "object" && "id" in refreshTokenVerifyResult) {
-                const user = await this.userModel.findById({ id: +refreshTokenVerifyResult.id });
+                const user = await this.userModel.findById(refreshTokenVerifyResult.id);
                 if (!user) throw new UnauthorizedException(AuthMessages.NotFoundAccount);
                 const access_token = this.authService.signAccess_tokenJwt({ id: user.id });
                 const refresh_token = this.authService.signRefresh_tokenJwt({ id: user.id });

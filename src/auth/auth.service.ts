@@ -73,7 +73,7 @@ export class AuthService {
         const token: string | undefined = req?.signedCookies?.refresh_token ?? req?.cookies?.refresh_token ?? headerCookies?.refresh_token;
         return token
     }
-    async verifyAccessToken(token: string): Promise<any> {
+    async verifyAccessToken(token: string) {
         try {
             const { ACCESS_TOKEN_SECRET: secret } = process.env;
             return this.jwtService.verify(token, { secret });
@@ -82,7 +82,7 @@ export class AuthService {
 
         }
     }
-    async verifyRefreshTokenJwt(token: string): Promise<any> {
+    async verifyRefreshTokenJwt(token: string) {
         try {
             const { REFRESH_TOKEN_SECRET: secret } = process.env;
             return this.jwtService.verify(token, { secret });
