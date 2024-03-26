@@ -1,19 +1,19 @@
 import { ExecutionContext, Injectable, UnauthorizedException } from "@nestjs/common";
 import mongoose, { Model } from "mongoose";
-import { User } from "src/user/schema/user.schema";
+import { User } from "../../user/schema/user.schema";
 import { AuthService } from "../auth.service";
 import { InjectModel } from "@nestjs/mongoose";
 import { JwtPayloadDto } from "../dto/payload.dto";
 import { AuthMessages } from "../enum/auth.enum";
-import { JwtError } from "src/common/enum/error-jwt.enum";
+import { JwtError } from "../../common/enum/error-jwt.enum";
 import { Request, Response } from "express";
 import { AuthGuard } from "@nestjs/passport";
-import { justSetAuthCookies } from "src/common/utils/auth-cookie";
-import { getUserResponse } from "src/common/utils/function";
-import { IUser } from "src/user/interface/user-request.interface";
-import { CookieKeys } from "src/common/enum/cookie.enum";
-import { GetTokenCookieOption } from "src/config/cookie.config";
-import { RefreshTokenExpires } from "src/common/constant/expires-data.contant";
+import { justSetAuthCookies } from "../../common/utils/auth-cookie";
+import { getUserResponse } from "../../common/utils/function";
+import { IUser } from "../../user/interface/user-request.interface";
+import { CookieKeys } from "../../common/enum/cookie.enum";
+import { GetTokenCookieOption } from "../../config/cookie.config";
+import { RefreshTokenExpires } from "../../common/constant/expires-data.contant";
 
 @Injectable()
 export class JwtAuthGuard extends AuthGuard('jwt') {

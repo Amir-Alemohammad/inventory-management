@@ -1,24 +1,25 @@
 import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Put, Query, Req } from "@nestjs/common";
 import { ApiConsumes, ApiParam, ApiQuery, ApiTags } from "@nestjs/swagger";
 import { ItemService } from "./item.service";
-import { SwaggerConsumes } from "src/common/enum/swagger.enum";
+import { SwaggerConsumes } from "../common/enum/swagger.enum";
 import { CreateItemDto } from "./dto/create.dto";
 import { Request } from "express";
 import { ItemMessage } from "./enum/item.enum";
-import { AuthDecorator } from "src/common/decorators/auth.decorator";
-import { Pagination } from "src/common/decorators/pagination.decorator";
-import { Sortable } from "src/common/decorators/sort.decorator";
-import { PaginationDto } from "src/common/dto/pagination.dto";
-import { SortDto } from "src/common/dto/sortable.dto";
+import { AuthDecorator } from "../common/decorators/auth.decorator";
+import { Pagination } from "../common/decorators/pagination.decorator";
+import { Sortable } from "../common/decorators/sort.decorator";
+import { PaginationDto } from "../common/dto/pagination.dto";
+import { SortDto } from "../common/dto/sortable.dto";
 import { UpdateItemDto } from "./dto/update.dto";
 
 @Controller('item')
 @ApiTags("Items")
-@AuthDecorator()
 export class ItemController {
     constructor(
         private readonly itemService: ItemService,
     ) { }
+
+    @AuthDecorator()
     @Post()
     @ApiConsumes(SwaggerConsumes.JSON)
     async create(@Body() createItemDto: CreateItemDto, @Req() req: Request) {
@@ -42,6 +43,8 @@ export class ItemController {
     async findOne(@Param('id') id: string) {
         return await this.itemService.findOne(id);
     }
+
+    @AuthDecorator()
     @Put(':id')
     @ApiParam({ type: "string", name: 'id' })
     @ApiConsumes(SwaggerConsumes.JSON)
@@ -52,6 +55,8 @@ export class ItemController {
             message: ItemMessage.Updated,
         }
     }
+
+    @AuthDecorator()
     @Delete(":id")
     @ApiParam({ type: "string", name: 'id' })
     async remove(@Param('id') id: string) {

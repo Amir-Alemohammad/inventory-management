@@ -4,10 +4,10 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { join } from 'path';
 import { MongooseModule } from '@nestjs/mongoose';
-import { UsersModule } from 'src/user/user.module';
-import { AuthModule } from 'src/auth/auth.module';
-import { CustomJWTModule } from 'src/jwt-modules/jwt.module';
-import { ItemModule } from 'src/items/item.module';
+import { UsersModule } from '../user/user.module';
+import { AuthModule } from '../auth/auth.module';
+import { CustomJWTModule } from '../jwt-modules/jwt.module';
+import { ItemModule } from '../items/item.module';
 
 @Module({
   imports: [

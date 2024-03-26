@@ -3,14 +3,14 @@ import { JwtService } from "@nestjs/jwt";
 import { InjectModel } from "@nestjs/mongoose";
 import { Request } from "express";
 import { Model } from "mongoose";
-import { User } from "src/user/schema/user.schema";
+import { User } from "../user/schema/user.schema";
 import { JwtPayloadDto } from "./dto/payload.dto";
-import { AuthEnum } from "src/common/enum/auth.enum";
+import { AuthEnum } from "../common/enum/auth.enum";
 import { AuthMessages } from "./enum/auth.enum";
 import { parse } from 'querystring';
-import { JwtError } from "src/common/enum/error-jwt.enum";
+import { JwtError } from "../common/enum/error-jwt.enum";
 import { RegisterDto } from "./dto/register.dto";
-import { UserService } from "src/user/user.service";
+import { UserService } from "../user/user.service";
 import { compareSync, hashSync } from "bcrypt";
 import { LoginDto } from "./dto/login.dto";
 

@@ -2,7 +2,7 @@ import { BadRequestException, Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { User } from "./schema/user.schema";
 import { Model } from "mongoose";
-import { AuthMessages } from "src/auth/enum/auth.enum";
+import { AuthMessages } from "../auth/enum/auth.enum";
 
 @Injectable()
 export class UserService {

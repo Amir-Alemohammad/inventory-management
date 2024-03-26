@@ -1,7 +1,7 @@
 import { Request } from "express";
 import * as qs from 'querystring';
-import { IUser } from "src/user/interface/user-request.interface";
-import { User } from "src/user/schema/user.schema";
+import { IUser } from "../../user/interface/user-request.interface";
+import { User } from "../../user/schema/user.schema";
 
 export function getAccessTokenFromRequest(req: Request) {
     const headerCookies: any = qs.parse(req?.headers?.cookie);

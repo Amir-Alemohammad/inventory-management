@@ -2,10 +2,10 @@ import { Body, Controller, HttpStatus, Post, Req, Res } from "@nestjs/common";
 import { ApiConsumes, ApiTags } from "@nestjs/swagger";
 import { AuthService } from "./auth.service";
 import { RegisterDto } from "./dto/register.dto";
-import { SwaggerConsumes } from "src/common/enum/swagger.enum";
+import { SwaggerConsumes } from "../common/enum/swagger.enum";
 import { AuthMessages } from "./enum/auth.enum";
 import { LoginDto } from "./dto/login.dto";
-import { setAuthCookies } from "src/common/utils/auth-cookie";
+import { setAuthCookies } from "../common/utils/auth-cookie";
 import { Request, Response } from "express";
 
 @Controller('auth')

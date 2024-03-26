@@ -3,11 +3,11 @@ import { InjectModel } from "@nestjs/mongoose";
 import { Item } from "./schema/item.schema";
 import { Model, isValidObjectId } from "mongoose";
 import { CreateItemDto } from "./dto/create.dto";
-import { IUser } from "src/user/interface/user-request.interface";
-import { User } from "src/user/schema/user.schema";
-import { PaginationDto } from "src/common/dto/pagination.dto";
-import { SortDto } from "src/common/dto/sortable.dto";
-import { paginationGenerator, paginationSolver } from "src/common/utils/function";
+import { IUser } from "../user/interface/user-request.interface";
+import { User } from "../user/schema/user.schema";
+import { PaginationDto } from "../common/dto/pagination.dto";
+import { SortDto } from "../common/dto/sortable.dto";
+import { paginationGenerator, paginationSolver } from "../common/utils/function";
 import { ItemMessage } from "./enum/item.enum";
 import { UpdateItemDto } from "./dto/update.dto";
 

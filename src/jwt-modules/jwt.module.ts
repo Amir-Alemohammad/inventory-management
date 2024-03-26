@@ -4,7 +4,7 @@ import { config } from "dotenv";
 import { join } from "path";
 import { JwtStrategy } from "../auth/strategy/jwt.strategy";
 import { MongooseModule } from "@nestjs/mongoose";
-import { User, UserSchema } from "src/user/schema/user.schema";
+import { User, UserSchema } from "../user/schema/user.schema";
 config({
     path: join(process.cwd(), `.env`)
 })

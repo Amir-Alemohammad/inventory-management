@@ -1,9 +1,9 @@
 import { Request, Response } from "express"
 import { HttpStatus } from "@nestjs/common";
 import { CookieKeys } from "../enum/cookie.enum";
-import { GetTokenCookieOption } from "src/config/cookie.config";
+import { GetTokenCookieOption } from "../../config/cookie.config";
 import { AccessTokenExpires, RefreshTokenExpires } from "../constant/expires-data.contant";
-import { AuthMessages } from "src/auth/enum/auth.enum";
+import { AuthMessages } from "../../auth/enum/auth.enum";
 type TokenType = { access_token: string, refresh_token: string }
 
 export async function setAuthCookies(req: Request, res: Response, response: TokenType) {

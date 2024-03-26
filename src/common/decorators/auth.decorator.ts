@@ -1,6 +1,6 @@
-import { applyDecorators, UseGuards, UseInterceptors } from "@nestjs/common";
+import { applyDecorators, UseGuards } from "@nestjs/common";
 import { ApiBearerAuth } from "@nestjs/swagger";
-import { JwtAuthGuard } from "src/auth/guard/jwt.guard";
+import { JwtAuthGuard } from "../../auth/guard/jwt.guard";
 
 export function AuthDecorator() {
     return applyDecorators(
