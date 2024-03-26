@@ -15,6 +15,26 @@ export function getRefreshTokenFromRequest(req: Request) {
     const refreshToken = req?.signedCookies?.refresh_token ?? req?.cookies?.refresh_token ?? headerCookies?.refresh_token ?? null;
     return refreshToken
 }
+export function paginationGenerator(count: number = 0, page: number = 0, limit: number = 0) {
+    return {
+        totalCount: count,
+        page: +page,
+        limit,
+        pageCount: Math.ceil(count / limit)
+    }
+}
+export function paginationSolver(page: number = 1, limit: number = 10) {
+    if (!page || page < 1) {
+        page = 0
+    }
+    if (!limit || limit <= 0) limit = 10;
+    const skip = page * limit;
+    return {
+        page,
+        limit,
+        skip
+    }
+}
 export function getUserResponse(user: User): IUser {
     return {
         username: user.username,

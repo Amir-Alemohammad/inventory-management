@@ -3,8 +3,8 @@ import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 export class UpdateItemDto {
     @ApiPropertyOptional()
     name: string;
-    @ApiProperty()
+    @ApiPropertyOptional()
     description: string;
-    @ApiProperty()
+    @ApiPropertyOptional()
     quantity: number;
 }
